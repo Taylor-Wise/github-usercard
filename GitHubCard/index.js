@@ -2,7 +2,10 @@
            (replacing the palceholder with your Github name):
            https://api.github.com/users/<your name>
 */
-
+axios.get("https://api.github.com/users/Taylor-Wise")
+.then(response => {
+  console.log("response", response)
+})
 /* Step 2: Inspect and study the data coming back, this is YOUR 
    github info! You will need to understand the structure of this 
    data in order to use it to build your component function 
@@ -43,9 +46,43 @@ const followersArray = [];
     <p>Bio: {users bio}</p>
   </div>
 </div>
-
 */
 
+const createCard = (obj) => {
+  const newCard = document.createElement("div")
+  const profileImg = document.createElement("img")
+  const cardInfo = document.createElement("div")
+  const cardName = document.createElement ("h3")
+  const ghHandle = document.createElement("p")
+  const locate = document.createElement("p")
+  const profile = document.createElement("p")
+  const profileLink = document.createElement("a")
+  const followers = document.createElement("p")
+  const following = document.createElement("p")
+  const bio = document.createElement("p")
+
+  newCard.appendChild(profileImg)
+  newCard.appendChild(cardInfo)
+  cardInfo.appendChild(cardName)
+  cardInfo.appendChild(ghHandle)
+  cardInfo.appendChild(locate)
+  cardInfo.appendChild(profile)
+  profile.appendChild(profileLink)
+  cardInfo.appendChild(followers)
+  cardInfo.appendChild(following)
+  cardInfo.appendChild(bio)
+
+  newCard.classList.add("card")
+  cardInfo.classList.add("card-info")
+  cardName.classList.add("name")
+  ghHandle.classList.add("username")
+  
+
+  return newCard
+}
+
+const cards = document.querySelector(".cards")
+cards.appendChild(createCard())
 /* List of LS Instructors Github username's: 
   tetondan
   dustinmyers
