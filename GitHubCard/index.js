@@ -26,7 +26,7 @@
           user, and adding that card to the DOM.
 */
 
-const followersArray = ["Holly919", "StrayLove", "spazdrum", "aware91", "reannalp", "tetondan", "dustinmyers", "justsml", "luishrd", "bigknell"];
+const followersArray = ["Taylor-Wise", "Holly919", "StrayLove", "spazdrum", "aware91", "reannalp", "tetondan", "dustinmyers", "justsml", "luishrd", "bigknell"];
 
 /* Step 3: Create a function that accepts a single object as its only argument,
           Using DOM methods and properties, create a component that will return the following DOM element:
@@ -46,21 +46,6 @@ const followersArray = ["Holly919", "StrayLove", "spazdrum", "aware91", "reannal
   </div>
 </div>
 */
-
-
-axios.get("https://api.github.com/users/Taylor-Wise")
-.then(response => {
-  // console.log("response", response.data)
-
-  const github = response.data
-  const cards = document.querySelector(".cards")
-  cards.appendChild(createCard(github))
-
-})
-.catch(err => {
-  console.log(err)
-})
-
 
 const createCard = (obj) => {
   const newCard = document.createElement("div")
@@ -112,15 +97,12 @@ const createCard = (obj) => {
 followersArray.forEach(name => {
   axios.get(`https://api.github.com/users/${name}`)
   .then(response => {
-    const github = response.data
     const cards = document.querySelector(".cards")
-    cards.appendChild(createCard(github))
-  
+    cards.appendChild(createCard(response.data))
   })
   .catch(err => {
     console.log(err)
   })
-
 })
 
 /* List of LS Instructors Github username's: 
